@@ -3,7 +3,7 @@
     session_start();
     require('config/database.php');
     require('includes/function.php');
-    require('includes/constants.php');
+    // require('includes/constants.php');
     
 
     if(isset($_POST['register'])){
@@ -31,11 +31,11 @@
                 }
             }
             if(is_already_in_use('pseudo', $pseudo, 'users')){
-                $errors = 'pseudonyme déjà utilisé !';
+                $errors[] = 'pseudonyme déjà utilisé !';
             }
             
             if(is_already_in_use('email', $email, 'users')){
-                $errors = 'Adresse email déjà utilisé !';
+                $errors[] = 'Adresse email déjà utilisé !';
             }
 
             if(count($errors) == 0){
@@ -56,15 +56,18 @@
 
                 mail($to , $subject, $content, $headers);                
                 //informer l'utilisateur
-               set_flash("Mail d'activation envoyé !","success") ;
-               
-            //    header("Location :  /index.php");
-            //     exit();
+               set_flash("Mail d'activation envoyé !","success") ;               
+               redirect('index.php');
+            }else{
+                save_input_data();
             }
 
-        }else{
+        }else{            
             $errors[] = 'Veuillez remplir tous les champs';
+            save_input_data();
         }
+    }else {
+        clear_input_data();
     }
 ?>
 

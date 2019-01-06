@@ -1,4 +1,4 @@
 <?php
     session_start();
-    require ('./views/index.view.php');
+    require ('views/index.view.php');
 ?>

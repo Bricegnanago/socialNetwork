@@ -1,5 +1,5 @@
 <?php 
-include('includes/constants.php');
+// include('includes/constants.php');
 $title = 'Accueil';
 include('partials/_header.php');
 ?>

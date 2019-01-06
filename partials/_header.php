@@ -1,6 +1,6 @@
 
 <?php
-    // include('includes/constants.php');
+    include('includes/constants.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
